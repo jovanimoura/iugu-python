@@ -17,7 +17,7 @@ class Plan(Action):
             raise RequiredParameters('Plan interval_type not informed')
         elif not data.get('currency', None):
             raise RequiredParameters('Plan currency not informed')
-        elif not data.get('value_cents', None):
+        elif not isinstance(data.get('value_cents', None), int):
             raise RequiredParameters('Plan value_cents not informed')
         url = self.api.make_url(['plans'])
         return super(Plan, self).create(url, data)

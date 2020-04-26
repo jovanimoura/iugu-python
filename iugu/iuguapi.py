@@ -45,9 +45,12 @@ class IuguApi(object):
 
     def make_url(self, paths):
         url = 'https://api.iugu.com/v1/'
+        final = ''
         for path in paths:
-            url = re.sub(r'/?$', re.sub(r'^/?', '/', str(path)), url)
-        return url
+            final = final + '/' + path
+            #url = re.sub(r'/?$', re.sub(r'^/?', '/', str(path)), url)
+
+        return url+final
 
 __default_api__ = None
 
